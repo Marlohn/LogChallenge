@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{C3826EDC-77D4-4D96-9173-E6B36AFC7C89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{D4655FB7-81A4-4CDF-8B75-5A6731C6BD4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{CD333911-92C9-4FDA-9FD0-E171DD6E8B91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{2F8DD422-F799-4ECF-B612-ACDDC65B3158}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{7EFC2CC6-CDE5-4A0D-A106-8183B348DD1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogChallenge.UI.Web", "LogChallenge.UI.Web\LogChallenge.UI.Web.csproj", "{F49FA783-F9FA-4CF6-B61A-DE3C76E7CF6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F49FA783-F9FA-4CF6-B61A-DE3C76E7CF6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F49FA783-F9FA-4CF6-B61A-DE3C76E7CF6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F49FA783-F9FA-4CF6-B61A-DE3C76E7CF6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F49FA783-F9FA-4CF6-B61A-DE3C76E7CF6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F49FA783-F9FA-4CF6-B61A-DE3C76E7CF6A} = {C3826EDC-77D4-4D96-9173-E6B36AFC7C89}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72C49025-CA20-4AD9-A268-73435ADEEE6F}
+	EndGlobalSection
+EndGlobal
