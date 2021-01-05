@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\Generics\" />
-    <Folder Include="Interfaces\Service\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\LogChallenge.Entities\LogChallenge.Entities.csproj" />
   </ItemGroup>
 
 </Project>
