@@ -23,7 +23,7 @@ namespace LogChallenge.Entities.Notifications
         [NotMapped]
         public List<Notifies> notifications { get; set; }
 
-        public bool ValidadeStringProperty(string value, string propertyName)
+        public bool isString(string value, string propertyName)
         {
             if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(propertyName))
             {
@@ -32,7 +32,20 @@ namespace LogChallenge.Entities.Notifications
                     mensage = "Required field",
                     PropertyName = propertyName
                 });
+                return false;
+            }
+            return true;
+        }
 
+        public bool isPositiveInteger(int value, string propertyName)
+        {
+            if (value < 1 || string.IsNullOrEmpty(propertyName))
+            {
+                notifications.Add(new Notifies
+                {
+                    mensage = "Value must be bigger than 0",
+                    PropertyName = propertyName
+                });
                 return false;
             }
             return true;
