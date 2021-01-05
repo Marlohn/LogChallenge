@@ -10,5 +10,6 @@ namespace LogChallenge.Domain.Models
     public class BaseEntity : Notifies
     {
         public Guid Id { get; set; }
+        public bool State { get; set; }
     }
 }
