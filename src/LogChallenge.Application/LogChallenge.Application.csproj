@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LogChallenge.Domain\LogChallenge.Domain.csproj" />
-    <ProjectReference Include="..\LogChallenge.Entities\LogChallenge.Entities.csproj" />
   </ItemGroup>
 
 </Project>
