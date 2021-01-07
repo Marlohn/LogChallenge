@@ -4,4 +4,16 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LogChallenge.Application\LogChallenge.Application.csproj" />
+    <ProjectReference Include="..\LogChallenge.Domain\LogChallenge.Domain.csproj" />
+    <ProjectReference Include="..\LogChallenge.Infra.Data\LogChallenge.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
