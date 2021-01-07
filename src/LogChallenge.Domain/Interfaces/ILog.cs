@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Interfaces
 {
-    public interface ILog : IGenerics<Log>
+    public interface ILog : IGeneric<Log>
     {
 
     }

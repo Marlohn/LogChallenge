@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Interfaces.Generics
 {
-    public interface IGenerics<T> where T : class
+    public interface IGeneric<T> where T : class
     {
         Task Add(T Object);
         Task Update(T Object);
