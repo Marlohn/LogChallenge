@@ -1,3 +1,5 @@
+using LogChallenge.Application.Interfaces;
+using LogChallenge.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,8 @@ namespace LogChallenge.UI.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            DependencyInjector.Registry(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

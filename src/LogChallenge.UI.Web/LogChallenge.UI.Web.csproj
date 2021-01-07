@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LogChallenge.Application\LogChallenge.Application.csproj" />
+    <ProjectReference Include="..\LogChallenge.Infra.IoC\LogChallenge.Infra.IoC.csproj" />
+  </ItemGroup>
+
 </Project>
