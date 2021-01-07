@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogChallenge.Application", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogChallenge.Domain", "LogChallenge.Domain\LogChallenge.Domain.csproj", "{CBAA4F37-5CD5-42CE-90EB-7C43CF829089}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7 - Tests", "7 - Tests", "{4904AF8B-464A-45E4-B66D-2D57BE01FB4D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{4904AF8B-464A-45E4-B66D-2D57BE01FB4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogChallenge.Infra.Data", "LogChallenge.Infra.Data\LogChallenge.Infra.Data.csproj", "{6E0135C3-194B-471F-AF04-806FC0C819EE}"
 EndProject
