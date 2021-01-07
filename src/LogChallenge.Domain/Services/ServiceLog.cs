@@ -24,7 +24,7 @@ namespace LogChallenge.Domain.Services
 
             if (nameValidation && statusValidation)
             {
-                log.State = true;
+                //log.State = true;
                 await _ILog.Add(log);
             }
         }
