@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace LogChallenge.Application.Dto.Generic
 {
-    class BaseDto
+    public class BaseDto
     {
+        public Guid Id { get; set; }
     }
 }
