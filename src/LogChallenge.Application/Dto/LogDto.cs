@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogChallenge.Application.Dto
 {
-    public class LogDto : BaseDto
+    public class LogDto : BaseEntityDto
     {
         public string Host { get; set; }
         public string Identity { get; set; }
