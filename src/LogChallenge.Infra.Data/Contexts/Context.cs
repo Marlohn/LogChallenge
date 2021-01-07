@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LogChallenge.Infra.Data.Contexts
 {
-    class Context : DbContext
+    public class Context : DbContext
     {
         public DbSet<Log> Calculadora { get; set; }
         public IDbContextTransaction Transaction { get; private set; }
