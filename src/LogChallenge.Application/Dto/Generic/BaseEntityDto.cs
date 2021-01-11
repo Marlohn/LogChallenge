@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogChallenge.Application.Dto.Generic
 {
-    public class BaseEntityDto
+    public class BaseEntityDto : NotificationDto
     {
         public Guid Id { get; set; }
     }

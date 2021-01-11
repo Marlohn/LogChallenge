@@ -12,7 +12,6 @@ namespace LogChallenge.Infra.Data.Contexts
     public class Context : DbContext
     {
         public DbSet<Log> Log { get; set; }
-        public IDbContextTransaction Transaction { get; private set; }
 
         public Context(DbContextOptions<Context> options): base(options)      
         {

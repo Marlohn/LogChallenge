@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Entities.Generic
 {
-    public class BaseEntity : Notifies
+    public class BaseEntity : Notification
     {
         public Guid Id { get; set; }
 

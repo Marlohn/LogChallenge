@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Entities.Generic
 {
-    public class Notifies
+    public class Notification
     {
-        public Notifies()
+        public Notification()
         {
-            notifications = new List<Notifies>();
+            notifications = new List<Notification>();
         }
 
         [NotMapped]
@@ -21,13 +17,13 @@ namespace LogChallenge.Domain.Entities.Generic
         public string mensage { get; set; }
 
         [NotMapped]
-        public List<Notifies> notifications { get; set; }
+        public List<Notification> notifications { get; set; }
 
         public bool isString(string value, string propertyName)
         {
             if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(propertyName))
             {
-                notifications.Add(new Notifies
+                notifications.Add(new Notification
                 {
                     mensage = "Required field",
                     PropertyName = propertyName
@@ -41,7 +37,7 @@ namespace LogChallenge.Domain.Entities.Generic
         {
             if (value < 1 || string.IsNullOrEmpty(propertyName))
             {
-                notifications.Add(new Notifies
+                notifications.Add(new Notification
                 {
                     mensage = "Value must be bigger than 0",
                     PropertyName = propertyName
