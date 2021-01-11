@@ -19,37 +19,24 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
 
         public async Task Add(T entity)
         {
-            throw new NotImplementedException();
-            /*
-            contexto.InitTransacao();
-            var id = contexto.Set<TEntidade>().Add(entidade).Entity.Id;
-            contexto.SendChanges();
-            return id;
-            */
+            _context.Set<T>().Add(entity);
+            await _context.SaveChangesAsync();
         }
 
         public async Task Delete(Guid id)
         {
-            throw new NotImplementedException();
-            /*
-            var entidade = SelecionarPorId(id);
-            if (entidade != null)
+            var entity = await SelectById(id);
+            if (entity != null)
             {
-                contexto.InitTransacao();
-                contexto.Set<TEntidade>().Remove(entidade);
-                contexto.SendChanges();
-            }
-            */
+                _context.Set<T>().Remove(entity);
+                await _context.SaveChangesAsync();
+            } //review this return
         }
 
         public async Task Delete(T entity)
         {
-            throw new NotImplementedException();
-            /*
-            contexto.InitTransacao();
-            contexto.Set<TEntidade>().Remove(entidade);
-            contexto.SendChanges();
-            */
+            _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<T>> List()
@@ -59,19 +46,13 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
 
         public async Task<T> SelectById(Guid id)
         {
-            throw new NotImplementedException();
-            //return contexto.Set<TEntidade>().Find(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public async Task Update(T entity)
         {
-            throw new NotImplementedException();
-            /*
-            contexto.InitTransacao();
-            contexto.Set<TEntidade>().Attach(entidade);
-            contexto.Entry(entidade).State = EntityState.Modified;
-            contexto.SendChanges();
-            */
+            _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }
