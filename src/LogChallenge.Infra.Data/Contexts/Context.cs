@@ -11,7 +11,7 @@ namespace LogChallenge.Infra.Data.Contexts
 {
     public class Context : DbContext
     {
-        public DbSet<Log> Calculadora { get; set; }
+        public DbSet<Log> Log { get; set; }
         public IDbContextTransaction Transaction { get; private set; }
 
         public Context(DbContextOptions<Context> options): base(options)      
@@ -20,6 +20,11 @@ namespace LogChallenge.Infra.Data.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=password;");
+                base.OnConfiguring(optionsBuilder);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
