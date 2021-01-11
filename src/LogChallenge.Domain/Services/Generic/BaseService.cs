@@ -42,9 +42,9 @@ namespace LogChallenge.Domain.Services.Generic
             return await _repository.List();
         }
 
-        public async Task<T> SelectById(Guid id)
+        public async Task<T> GetById(Guid id)
         {
-            return await _repository.SelectById(id);
+            return await _repository.GetById(id);
         }
     }
 }

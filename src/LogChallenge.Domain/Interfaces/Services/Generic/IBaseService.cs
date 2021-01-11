@@ -11,7 +11,7 @@ namespace LogChallenge.Domain.Interfaces.Services.Generic
         Task Delete(Guid id);
         Task Delete(T entity);
         Task Update(T entity);
-        Task<T> SelectById(Guid id);
+        Task<T> GetById(Guid id);
         Task<List<T>> List();
     }
 }

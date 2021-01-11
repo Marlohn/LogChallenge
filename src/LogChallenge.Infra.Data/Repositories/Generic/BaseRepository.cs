@@ -26,7 +26,7 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
 
         public async Task Delete(Guid id)
         {
-            var entity = await SelectById(id);
+            var entity = await GetById(id);
             if (entity != null)
             {
                 _context.Set<T>().Remove(entity);
@@ -45,7 +45,7 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> SelectById(Guid id)
+        public async Task<T> GetById(Guid id)
         {
             return await _context.Set<T>().FindAsync(id);
         }

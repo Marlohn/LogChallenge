@@ -46,9 +46,9 @@ namespace LogChallenge.Application.Services.Generic
             return _mapper.Map<List<TDto>>(await _service.List());
         }
 
-        public async Task<TDto> SelectById(Guid id)
+        public async Task<TDto> GetById(Guid id)
         {
-            return _mapper.Map<TDto>(await _service.SelectById(id));
+            return _mapper.Map<TDto>(await _service.GetById(id));
         }
 
     }

@@ -12,7 +12,7 @@ namespace LogChallenge.Application.Interfaces.Generic
         Task Delete(Guid id);
         Task Delete(TDto entity);
         Task Update(TDto entity);
-        Task<TDto> SelectById(Guid id);
+        Task<TDto> GetById(Guid id);
         Task<List<TDto>> List();
     }
 }
