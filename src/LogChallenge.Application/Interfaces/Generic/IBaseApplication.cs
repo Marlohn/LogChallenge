@@ -8,7 +8,7 @@ namespace LogChallenge.Application.Interfaces.Generic
 {
     public interface IBaseApplication<T, TDto> where T : BaseEntity where TDto : BaseEntityDto
     {
-        Task Add(TDto entity);
+        Task<Guid> Add(TDto entity);
         Task Delete(Guid id);
         Task Delete(TDto entity);
         Task Update(TDto entity);

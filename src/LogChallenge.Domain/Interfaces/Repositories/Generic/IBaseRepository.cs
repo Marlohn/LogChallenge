@@ -9,7 +9,7 @@ namespace LogChallenge.Domain.Interfaces.Repositories.Generic
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
-        Task Add(T entity);
+        Task<Guid> Add(T entity);
         Task Delete(Guid id);
         Task Delete(T entity);
         Task Update(T entity);

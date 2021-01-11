@@ -17,10 +17,11 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
             _context = context;
         }
 
-        public async Task Add(T entity)
+        public async Task<Guid> Add(T entity)
         {
-            _context.Set<T>().Add(entity);
+            var id = _context.Set<T>().Add(entity).Entity.Id;
             await _context.SaveChangesAsync();
+            return id;
         }
 
         public async Task Delete(Guid id)

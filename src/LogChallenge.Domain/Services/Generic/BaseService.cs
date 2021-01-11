@@ -12,14 +12,14 @@ namespace LogChallenge.Domain.Services.Generic
 
         protected readonly IBaseRepository<T> _repository;
 
-        public BaseService(IBaseRepository<T> repository)
+        public BaseService(IBaseRepository<T> Repository)
         {
-            _repository = repository;
+            _repository = Repository;
         }
 
-        public async Task Add(T entity)
+        public async Task<Guid> Add(T entity)
         {
-            await _repository.Add(entity);
+            return await _repository.Add(entity);
         }
 
         public async Task Delete(Guid id)

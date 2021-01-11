@@ -21,9 +21,9 @@ namespace LogChallenge.Application.Services.Generic
             _service = service;
         }
 
-        public async Task Add(TDto entity)
+        public async Task<Guid> Add(TDto entity)
         {
-            await _service.Add(_mapper.Map<T>(entity));
+            return await _service.Add(_mapper.Map<T>(entity));
         }
 
         public async Task Delete(Guid id)
