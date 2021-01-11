@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LogChallenge.Application\LogChallenge.Application.csproj" />
     <ProjectReference Include="..\LogChallenge.Infra.IoC\LogChallenge.Infra.IoC.csproj" />
   </ItemGroup>
