@@ -1,4 +1,4 @@
-# Desafio Técnico .NET Ben Fatto
+# Desafio Técnico .NET
 ## OBJETIVO
 Escrever uma aplicação .NET que tenha como objetivo, fazer upload de arquivo de log e popular o banco de dados. Para isso será necessário uma tela onde o usuário possa listar/consultar/pesquisar logs, e uma segunda tela que possibilite ao usuário a inserção manual de um arquivo de log. Implementar o back-end com (ASP .NET Core) e front-end usando JavaScript, AJAX, JQuery, HTML5, CSS3 ou Angular (Se for em angular, preferencialmente acima do 6).
 
@@ -19,7 +19,7 @@ Escrever uma aplicação .NET que tenha como objetivo, fazer upload de arquivo d
  - (BÔNUS) Tela para buscar logs feitos por um determinado IP, por hora, user-agent (agregação).
 
 ## EXEMPLOS DO ARQUIVO DE LOG:
- - [Link do arquivo](https://github.com/Marlohn/DesafioLog/blob/develop/extras/sample.log)
+ - [Link do arquivo](https://github.com/Marlohn/LogChallenge/blob/develop/extras/sample.log)
  
 ## REQUISITOS DE ENTREGA
  - O código deve ser disponibilizado em um repositório público, nas seguintes opções:
