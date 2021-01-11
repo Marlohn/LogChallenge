@@ -10,11 +10,11 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        protected readonly Context _Context;
+        protected readonly Context _context;
 
-        public BaseRepository(Context Context) : base()
+        public BaseRepository(Context context) : base()
         {
-            _Context = Context;
+            _context = context;
         }
 
         public async Task Add(T entity)
@@ -54,7 +54,7 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
 
         public async Task<List<T>> List()
         {
-            return await _Context.Set<T>().ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
 
         public async Task<T> SelectById(Guid id)

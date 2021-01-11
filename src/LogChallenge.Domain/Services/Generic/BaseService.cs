@@ -10,41 +10,41 @@ namespace LogChallenge.Domain.Services.Generic
     public class BaseService<T> : IBaseService<T> where T : BaseEntity
     {
 
-        protected readonly IBaseRepository<T> _Repository;
+        protected readonly IBaseRepository<T> _repository;
 
-        public BaseService(IBaseRepository<T> Repository)
+        public BaseService(IBaseRepository<T> repository)
         {
-            _Repository = Repository;
+            _repository = repository;
         }
 
         public async Task Add(T entity)
         {
-            await _Repository.Add(entity);
+            await _repository.Add(entity);
         }
 
         public async Task Delete(Guid id)
         {
-            await _Repository.Delete(id);
+            await _repository.Delete(id);
         }
 
         public async Task Delete(T entity)
         {
-            await _Repository.Delete(entity);
+            await _repository.Delete(entity);
         }
 
         public async Task Update(T entity)
         {
-            await _Repository.Update(entity);
+            await _repository.Update(entity);
         }
 
         public async Task<List<T>> List()
         {
-            return await _Repository.List();
+            return await _repository.List();
         }
 
         public async Task<T> SelectById(Guid id)
         {
-            return await _Repository.SelectById(id);
+            return await _repository.SelectById(id);
         }
     }
 }

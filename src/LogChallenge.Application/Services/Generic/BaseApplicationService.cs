@@ -12,43 +12,43 @@ namespace LogChallenge.Application.Services.Generic
 
     public class BaseApplicationService<T, TDto> : IBaseApplication<T, TDto> where T : BaseEntity where TDto : BaseEntityDto
     {
-        protected readonly IBaseService<T> _Service;
-        protected readonly IMapper _iMapper;
+        protected readonly IBaseService<T> _service;
+        protected readonly IMapper _mapper;
 
-        public BaseApplicationService(IMapper iMapper, IBaseService<T> servico) : base()
+        public BaseApplicationService(IMapper mapper, IBaseService<T> service) : base()
         {
-            _iMapper = iMapper;
-            _Service = servico;
+            _mapper = mapper;
+            _service = service;
         }
 
         public async Task Add(TDto entity)
         {
-            await _Service.Add(_iMapper.Map<T>(entity));
+            await _service.Add(_mapper.Map<T>(entity));
         }
 
         public async Task Delete(Guid id)
         {
-            await _Service.Delete(_iMapper.Map<T>(id));
+            await _service.Delete(_mapper.Map<T>(id));
         }
 
         public async Task Delete(TDto entity)
         {
-            await _Service.Delete(_iMapper.Map<T>(entity));
+            await _service.Delete(_mapper.Map<T>(entity));
         }
 
         public async Task Update(TDto entity)
         {
-            await _Service.Update(_iMapper.Map<T>(entity));
+            await _service.Update(_mapper.Map<T>(entity));
         }
 
         public async Task<List<TDto>> List()
         {
-            return _iMapper.Map<List<TDto>>(await _Service.List());
+            return _mapper.Map<List<TDto>>(await _service.List());
         }
 
         public async Task<TDto> SelectById(Guid id)
         {
-            return _iMapper.Map<TDto>(await _Service.SelectById(id));
+            return _mapper.Map<TDto>(await _service.SelectById(id));
         }
 
     }
