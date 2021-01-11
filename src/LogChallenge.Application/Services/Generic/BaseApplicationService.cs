@@ -5,8 +5,6 @@ using LogChallenge.Domain.Entities.Generic;
 using LogChallenge.Domain.Interfaces.Services.Generic;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Application.Services.Generic
@@ -50,7 +48,7 @@ namespace LogChallenge.Application.Services.Generic
 
         public async Task<TDto> SelectById(Guid id)
         {
-           return _iMapper.Map<TDto>(await _Service.SelectById(id));
+            return _iMapper.Map<TDto>(await _Service.SelectById(id));
         }
 
     }

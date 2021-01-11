@@ -3,8 +3,6 @@ using LogChallenge.Domain.Interfaces.Repositories.Generic;
 using LogChallenge.Domain.Interfaces.Services.Generic;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Services.Generic
@@ -48,6 +46,5 @@ namespace LogChallenge.Domain.Services.Generic
         {
             return await _Repository.SelectById(id);
         }
-
     }
 }

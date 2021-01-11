@@ -1,6 +1,7 @@
 ﻿using LogChallenge.Domain.Entities.Generic;
 using LogChallenge.Domain.Interfaces.Repositories.Generic;
 using LogChallenge.Infra.Data.Contexts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
             _Context = Context;
         }
 
-        public Task Add(T entity)
+        public async Task Add(T entity)
         {
             throw new NotImplementedException();
             /*
@@ -27,7 +28,7 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
             */
         }
 
-        public Task Delete(Guid id)
+        public async Task Delete(Guid id)
         {
             throw new NotImplementedException();
             /*
@@ -41,7 +42,7 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
             */
         }
 
-        public Task Delete(T entity)
+        public async Task Delete(T entity)
         {
             throw new NotImplementedException();
             /*
@@ -51,19 +52,18 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
             */
         }
 
-        public Task<List<T>> List()
+        public async Task<List<T>> List()
         {
-            throw new NotImplementedException();
-            //return contexto.Set<TEntidade>().ToList();
+            return await _Context.Set<T>().ToListAsync();
         }
 
-        public Task<T> SelectById(Guid id)
-        {            
+        public async Task<T> SelectById(Guid id)
+        {
             throw new NotImplementedException();
             //return contexto.Set<TEntidade>().Find(id);
         }
 
-        public Task Update(T entity)
+        public async Task Update(T entity)
         {
             throw new NotImplementedException();
             /*
