@@ -1,5 +1,6 @@
 ﻿using LogChallenge.Application.Dto;
 using LogChallenge.Application.Interfaces;
+using LogChallenge.Infra.Data.Contexts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,14 +14,31 @@ namespace LogChallenge.UI.Web.Controllers
     {
         private readonly ILogApplication _LogApplication;
 
-        public LogController(ILogApplication LogApplication)
+        public LogController(ILogApplication LogApplication) 
         {
             _LogApplication = LogApplication;
         }
 
+
         // GET: LogController
-        public async Task<IActionResult> Index()
-        {            
+        public async Task<IActionResult> Index(string host, string userAgent, DateTime? dateTime)
+        {
+            if (!string.IsNullOrEmpty(host))
+            {
+
+                return View(await _LogApplication.Where(a => a.Host == host));
+            }
+
+            if (!string.IsNullOrEmpty(userAgent))
+            {
+                return View(await _LogApplication.Where(a => a.UserAgent == userAgent));
+            }
+
+            if (dateTime != null)
+            {
+                return View(await _LogApplication.Where(a => a.DateTime == dateTime));
+            }
+
             return View(await _LogApplication.List());
         }
 
