@@ -1,11 +1,5 @@
 ﻿using LogChallenge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogChallenge.Infra.Data.Contexts
 {
@@ -13,7 +7,7 @@ namespace LogChallenge.Infra.Data.Contexts
     {
         public DbSet<Log> Log { get; set; }
 
-        public Context(DbContextOptions<Context> options): base(options)      
+        public Context(DbContextOptions<Context> options) : base(options)
         {
         }
 

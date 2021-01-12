@@ -1,11 +1,6 @@
 ﻿using LogChallenge.Domain.Entities;
 using LogChallenge.Infra.Data.Mappings.Generic;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogChallenge.Infra.Data.Mappings
 {

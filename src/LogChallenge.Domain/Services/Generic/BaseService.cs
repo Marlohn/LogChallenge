@@ -10,7 +10,6 @@ namespace LogChallenge.Domain.Services.Generic
 {
     public class BaseService<T> : IBaseService<T> where T : BaseEntity
     {
-
         protected readonly IBaseRepository<T> _repository;
 
         public BaseService(IBaseRepository<T> Repository)

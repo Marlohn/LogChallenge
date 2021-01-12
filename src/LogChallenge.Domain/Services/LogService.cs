@@ -2,11 +2,6 @@
 using LogChallenge.Domain.Interfaces.Repositories;
 using LogChallenge.Domain.Interfaces.Services;
 using LogChallenge.Domain.Services.Generic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Services

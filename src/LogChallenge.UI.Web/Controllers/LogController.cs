@@ -1,10 +1,7 @@
 ﻿using LogChallenge.Application.Dto;
 using LogChallenge.Application.Interfaces;
-using LogChallenge.Infra.Data.Contexts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,7 +11,7 @@ namespace LogChallenge.UI.Web.Controllers
     {
         private readonly ILogApplication _LogApplication;
 
-        public LogController(ILogApplication LogApplication) 
+        public LogController(ILogApplication LogApplication)
         {
             _LogApplication = LogApplication;
         }
@@ -62,7 +59,7 @@ namespace LogChallenge.UI.Web.Controllers
             try
             {
                 await _LogApplication.AddLog(logDto);
-                
+
                 if (logDto.notifications.Any())
                 {
                     foreach (var notification in logDto.notifications)
@@ -71,7 +68,7 @@ namespace LogChallenge.UI.Web.Controllers
                     }
 
                     return View("Edit", logDto);
-                }                
+                }
             }
             catch
             {

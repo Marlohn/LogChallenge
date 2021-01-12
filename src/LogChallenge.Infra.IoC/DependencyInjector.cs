@@ -1,23 +1,18 @@
-﻿using LogChallenge.Application.Interfaces;
+﻿using AutoMapper;
+using LogChallenge.Application.Interfaces;
 using LogChallenge.Application.Interfaces.Generic;
 using LogChallenge.Application.Services;
 using LogChallenge.Application.Services.Generic;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using LogChallenge.Domain.Interfaces.Services.Generic;
-using LogChallenge.Domain.Services.Generic;
-using LogChallenge.Domain.Services;
-using LogChallenge.Domain.Interfaces.Services;
-using LogChallenge.Infra.Data.Contexts;
-using LogChallenge.Domain.Interfaces.Repositories.Generic;
-using LogChallenge.Infra.Data.Repositories.Generic;
-using LogChallenge.Infra.Data.Repositories;
 using LogChallenge.Domain.Interfaces.Repositories;
+using LogChallenge.Domain.Interfaces.Repositories.Generic;
+using LogChallenge.Domain.Interfaces.Services;
+using LogChallenge.Domain.Interfaces.Services.Generic;
+using LogChallenge.Domain.Services;
+using LogChallenge.Domain.Services.Generic;
+using LogChallenge.Infra.Data.Contexts;
+using LogChallenge.Infra.Data.Repositories;
+using LogChallenge.Infra.Data.Repositories.Generic;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LogChallenge.Infra.IoC
 {

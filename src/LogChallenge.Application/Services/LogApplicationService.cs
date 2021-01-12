@@ -4,12 +4,6 @@ using LogChallenge.Application.Interfaces;
 using LogChallenge.Application.Services.Generic;
 using LogChallenge.Domain.Entities;
 using LogChallenge.Domain.Interfaces.Services;
-using LogChallenge.Domain.Services.Generic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Application.Services
@@ -19,7 +13,7 @@ namespace LogChallenge.Application.Services
         protected readonly ILogService _logService;
         protected readonly IMapper _mapper;
 
-        public LogApplicationService(IMapper mapper, ILogService logService) : base(mapper, logService)    
+        public LogApplicationService(IMapper mapper, ILogService logService) : base(mapper, logService)
         {
             _mapper = mapper;
             _logService = logService;
