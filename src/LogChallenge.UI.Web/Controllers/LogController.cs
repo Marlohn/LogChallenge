@@ -127,7 +127,7 @@ namespace LogChallenge.UI.Web.Controllers
             }
             catch
             {
-                return View();
+                return View(await _LogApplication.GetById(id));
             }
         }
     }
