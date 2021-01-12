@@ -1,6 +1,9 @@
 ﻿using LogChallenge.Application.Dto;
 using LogChallenge.Application.Interfaces.Generic;
 using LogChallenge.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Application.Interfaces

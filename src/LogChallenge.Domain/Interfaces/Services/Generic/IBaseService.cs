@@ -1,6 +1,7 @@
 ﻿using LogChallenge.Domain.Entities.Generic;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Interfaces.Services.Generic
@@ -13,5 +14,6 @@ namespace LogChallenge.Domain.Interfaces.Services.Generic
         Task Update(T entity);
         Task<T> GetById(Guid id);
         Task<List<T>> List();
+        Task<IEnumerable<T>> Where(Expression<Func<T, bool>> predicate);
     }
 }

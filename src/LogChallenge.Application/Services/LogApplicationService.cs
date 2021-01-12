@@ -8,6 +8,7 @@ using LogChallenge.Domain.Services.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,23 +16,23 @@ namespace LogChallenge.Application.Services
 {
     public class LogApplicationService : BaseApplicationService<Log, LogDto>, ILogApplication
     {
-        protected readonly ILogService _LogService;
-        protected readonly IMapper _iMapper;
+        protected readonly ILogService _logService;
+        protected readonly IMapper _mapper;
 
-        public LogApplicationService(IMapper iMapper, ILogService LogService) : base(iMapper, LogService)    
+        public LogApplicationService(IMapper mapper, ILogService logService) : base(mapper, logService)    
         {
-            _iMapper = iMapper;
-            _LogService = LogService;
+            _mapper = mapper;
+            _logService = logService;
         }
 
         public async Task UpdateLog(LogDto log)
         {
-            await _LogService.UpdateLog(_iMapper.Map<Log>(log));
+            await _logService.UpdateLog(_mapper.Map<Log>(log));
         }
 
         public async Task AddLog(LogDto log)
         {
-            await _LogService.AddLog(_iMapper.Map<Log>(log));
+            await _logService.AddLog(_mapper.Map<Log>(log));
         }
 
     }

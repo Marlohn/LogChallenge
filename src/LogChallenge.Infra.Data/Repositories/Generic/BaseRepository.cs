@@ -4,6 +4,8 @@ using LogChallenge.Infra.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Infra.Data.Repositories.Generic
@@ -54,6 +56,11 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
         {
             _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> Where(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().Where(predicate).AsNoTracking().ToListAsync();
         }
     }
 }

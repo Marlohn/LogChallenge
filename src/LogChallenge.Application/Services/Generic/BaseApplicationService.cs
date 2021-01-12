@@ -5,6 +5,8 @@ using LogChallenge.Domain.Entities.Generic;
 using LogChallenge.Domain.Interfaces.Services.Generic;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Application.Services.Generic
@@ -51,5 +53,13 @@ namespace LogChallenge.Application.Services.Generic
             return _mapper.Map<TDto>(await _service.GetById(id));
         }
 
+        public async Task<IEnumerable<TDto>> Where(Expression<Func<T, bool>> predicate)
+        {
+            return _mapper.Map<List<TDto>>(await _service.Where(predicate));
+        }
     }
+
 }
+
+
+

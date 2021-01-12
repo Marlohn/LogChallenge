@@ -3,6 +3,7 @@ using LogChallenge.Domain.Interfaces.Repositories.Generic;
 using LogChallenge.Domain.Interfaces.Services.Generic;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Services.Generic
@@ -45,6 +46,11 @@ namespace LogChallenge.Domain.Services.Generic
         public async Task<T> GetById(Guid id)
         {
             return await _repository.GetById(id);
+        }
+
+        public async Task<IEnumerable<T>> Where(Expression<Func<T, bool>> predicate)
+        {
+            return await _repository.Where(predicate);
         }
     }
 }

@@ -5,6 +5,7 @@ using LogChallenge.Domain.Services.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,11 +13,11 @@ namespace LogChallenge.Domain.Services
 {
     public class LogService : BaseService<Log>, ILogService
     {
-        protected readonly ILogRepository _Repository;
+        protected readonly ILogRepository _logRepository;
 
-        public LogService(ILogRepository Repository) : base(Repository)
+        public LogService(ILogRepository logRepository) : base(logRepository)
         {
-            _Repository = Repository;
+            _logRepository = logRepository;
         }
 
         public async Task AddLog(Log log)
@@ -27,7 +28,7 @@ namespace LogChallenge.Domain.Services
             if (nameValidation && statusValidation)
             {
                 //log.State = true;
-                await _Repository.Add(log);
+                await _logRepository.Add(log);
             }
         }
 
@@ -38,8 +39,9 @@ namespace LogChallenge.Domain.Services
 
             if (nameValidation && statusValidation)
             {
-                await _Repository.Update(log);
+                await _logRepository.Update(log);
             }
         }
+
     }
 }
