@@ -44,12 +44,12 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
 
         public async Task<List<T>> List()
         {
-            return await _context.Set<T>().ToListAsync();
+            return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
 
         public async Task<T> GetById(Guid id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(a=>a.Id == id);
         }
 
         public async Task Update(T entity)
