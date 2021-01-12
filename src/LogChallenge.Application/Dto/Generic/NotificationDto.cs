@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LogChallenge.Application.Dto.Generic
 {
@@ -9,13 +10,13 @@ namespace LogChallenge.Application.Dto.Generic
             notifications = new List<NotificationDto>();
         }
 
-        //[NotMapped]
+        [NotMapped]
         public string PropertyName { get; set; }
 
-        //[NotMapped]
+        [NotMapped]
         public string message { get; set; }
 
-        //[NotMapped]
+        [NotMapped]
         public List<NotificationDto> notifications { get; set; }
 
         public bool isString(string value, string propertyName)

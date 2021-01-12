@@ -16,13 +16,11 @@ namespace LogChallenge.UI.Web.Controllers
             _LogApplication = LogApplication;
         }
 
-
         // GET: LogController
         public async Task<IActionResult> Index(string host, string userAgent, DateTime? dateTime)
         {
             if (!string.IsNullOrEmpty(host))
             {
-
                 return View(await _LogApplication.Where(a => a.Host == host));
             }
 
@@ -67,12 +65,12 @@ namespace LogChallenge.UI.Web.Controllers
                         ModelState.AddModelError(notification.PropertyName, notification.message);
                     }
 
-                    return View("Edit", logDto);
+                    return View("Create", logDto);
                 }
             }
             catch
             {
-                return View();
+                return View("Create", logDto);
             }
 
             return RedirectToAction(nameof(Index));
@@ -105,7 +103,7 @@ namespace LogChallenge.UI.Web.Controllers
             }
             catch
             {
-                return View();
+                return View("Edit", logDto);
             }
 
             return RedirectToAction(nameof(Index));

@@ -13,6 +13,11 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Host" class="control-label"></label>
                 <input asp-for="Host" class="form-control" />
                 <span asp-validation-for="Host" class="text-danger"></span>
@@ -56,21 +61,6 @@
                 <label asp-for="UserAgent" class="control-label"></label>
                 <input asp-for="UserAgent" class="form-control" />
                 <span asp-validation-for="UserAgent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PropertyName" class="control-label"></label>
-                <input asp-for="PropertyName" class="form-control" />
-                <span asp-validation-for="PropertyName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="message" class="control-label"></label>
-                <input asp-for="message" class="form-control" />
-                <span asp-validation-for="message" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
