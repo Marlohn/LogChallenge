@@ -90,7 +90,7 @@ namespace LogChallenge.UI.Web.Controllers
         {
             try
             {
-                await _LogApplication.LogUpdate(logDto);
+                logDto = await _LogApplication.LogUpdate(logDto);
 
                 if (logDto.Notifications.Any())
                 {
