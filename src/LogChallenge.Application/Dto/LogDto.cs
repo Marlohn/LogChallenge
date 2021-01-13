@@ -9,10 +9,8 @@ namespace LogChallenge.Application.Dto
         [Required]
         public string Host { get; set; }
 
-        [Required]
         public string Identity { get; set; }
 
-        [Required]
         public string User { get; set; }
 
         [Required]

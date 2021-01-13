@@ -2,6 +2,7 @@
 using LogChallenge.Domain.Interfaces.Repositories;
 using LogChallenge.Domain.Interfaces.Services;
 using LogChallenge.Domain.Services.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Domain.Services
@@ -15,7 +16,7 @@ namespace LogChallenge.Domain.Services
             _logRepository = logRepository;
         }
 
-        public async Task AddLog(Log log)
+        public async Task LogAdd(Log log)
         {
             var nameValidation = log.isString(log.User, "User");
             var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
@@ -27,7 +28,7 @@ namespace LogChallenge.Domain.Services
             }
         }
 
-        public async Task UpdateLog(Log log)
+        public async Task LogUpdate(Log log)
         {
             var nameValidation = log.isString(log.User, "User");
             var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
@@ -36,6 +37,23 @@ namespace LogChallenge.Domain.Services
             {
                 await _logRepository.Update(log);
             }
+        }
+
+        public async Task<List<Log>> LogAddRange(List<Log> logList)
+        {
+            var LogListOK = new List<Log>();
+            foreach (var log in logList)
+            {
+                var nameValidation = log.isString(log.User, "User");
+                var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
+
+                if (nameValidation && statusValidation)
+                {
+                    LogListOK.Add(log);
+                }
+            }
+
+            return await _logRepository.LogAddRange(LogListOK);
         }
 
     }

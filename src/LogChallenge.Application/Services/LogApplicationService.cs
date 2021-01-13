@@ -1,9 +1,16 @@
 ﻿using AutoMapper;
 using LogChallenge.Application.Dto;
+using LogChallenge.Application.Dto.Generic;
 using LogChallenge.Application.Interfaces;
 using LogChallenge.Application.Services.Generic;
 using LogChallenge.Domain.Entities;
 using LogChallenge.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LogChallenge.Application.Services
@@ -19,14 +26,74 @@ namespace LogChallenge.Application.Services
             _logService = logService;
         }
 
-        public async Task UpdateLog(LogDto log)
+        public async Task LogUpdate(LogDto log)
         {
-            await _logService.UpdateLog(_mapper.Map<Log>(log));
+            await _logService.LogUpdate(_mapper.Map<Log>(log));
         }
 
-        public async Task AddLog(LogDto log)
+        public async Task LogAdd(LogDto log)
         {
-            await _logService.AddLog(_mapper.Map<Log>(log));
+            await _logService.LogAdd(_mapper.Map<Log>(log));
+        }
+
+        public async Task<List<LogDto>> LogAddRange(List<LogDto> logList)
+        {
+            return _mapper.Map<List<LogDto>>(await _logService.LogAddRange(_mapper.Map<List<Log>>(logList)));
+        }
+
+        public async Task<List<LogDto>> ConvertFileToLog(IFormFile file)
+        {
+            Regex regex = new Regex("^(?<host>\\S+) (?<identity>\\S+) (?<user>\\S+) \\[(?<dateTime>[\\w:/]+\\s[+\\-]\\d{4})\\] \"(?<request>.+?)\" (?<statusCode>\\d{3}) (?<size>\\d+|-) ?\"?(?<referer>[^\"]*)\"? ?\"?(?<userAgent>[^\"]*)?\"?$");
+
+            var LogList = new List<LogDto>();
+            using (var reader = new StreamReader(file.OpenReadStream()))
+            {
+                string line;
+                int lineCount = 0;
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    var currentLog = new LogDto();
+                    lineCount++;
+
+                    // Try to match each line against the Regex.
+                    Match match = regex.Match(line);
+                    if (match.Success)
+                    {
+                        try
+                        {
+                            currentLog.Host = match.Groups["host"].Value;
+                            currentLog.Identity = match.Groups["identity"].Value != "-" ? match.Groups["identity"].Value : null;
+                            currentLog.User = match.Groups["user"].Value != "-" ? match.Groups["user"].Value : null;
+                            currentLog.DateTime = DateTime.ParseExact(match.Groups["dateTime"].Value, "dd/MMM/yyyy:HH:mm:ss K", CultureInfo.InvariantCulture);
+                            currentLog.Request = match.Groups["request"].Value;
+                            currentLog.StatusCode = Convert.ToInt32(match.Groups["statusCode"].Value);
+                            currentLog.Size = match.Groups["size"].Value != "-" ? Convert.ToInt32(match.Groups["size"].Value) : null;
+                            currentLog.Referer = match.Groups["referer"].Value;
+                            currentLog.UserAgent = match.Groups["userAgent"].Value;
+                        }
+                        catch (Exception)
+                        {
+                            currentLog.notifications.Add(new NotificationDto
+                            {
+                                message = "Invalid property value",
+                                PropertyName = "Line " + lineCount
+                            });
+                        }
+                    }
+                    else
+                    {
+                        currentLog.notifications.Add(new NotificationDto
+                        {
+                            message = "Content does not math regex",
+                            PropertyName = "Line " + lineCount
+                        });
+                    }
+
+                    LogList.Add(currentLog);
+                }
+            }
+
+            return LogList;
         }
 
     }

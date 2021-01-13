@@ -1,5 +1,6 @@
 ﻿using LogChallenge.Application.Dto;
 using LogChallenge.Application.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -56,7 +57,7 @@ namespace LogChallenge.UI.Web.Controllers
         {
             try
             {
-                await _LogApplication.AddLog(logDto);
+                await _LogApplication.LogAdd(logDto);
 
                 if (logDto.notifications.Any())
                 {
@@ -89,7 +90,7 @@ namespace LogChallenge.UI.Web.Controllers
         {
             try
             {
-                await _LogApplication.UpdateLog(logDto);
+                await _LogApplication.LogUpdate(logDto);
 
                 if (logDto.notifications.Any())
                 {
@@ -129,6 +130,23 @@ namespace LogChallenge.UI.Web.Controllers
             {
                 return View(await _LogApplication.GetById(id));
             }
+        }
+
+        public async Task<IActionResult> Import()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return Content("file not selected");
+            }
+
+            var LogList = await _LogApplication.ConvertFileToLog(file);
+            return View("Import", await _LogApplication.LogAddRange(LogList));
         }
     }
 }
