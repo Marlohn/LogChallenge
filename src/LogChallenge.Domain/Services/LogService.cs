@@ -17,30 +17,32 @@ namespace LogChallenge.Domain.Services
             _logRepository = logRepository;
         }
 
-        public async Task LogAdd(Log log)
+        public async Task<Log> LogAdd(Log log)
         {
-            var nameValidation = log.isString(log.User, "User");
-            var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
+            //var nameValidation = log.isString(log.User, "User");
+            //var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
 
-            if (nameValidation && statusValidation)
-            {
-                log.RegDate = DateTime.Now;
-                log.UpdateDate = DateTime.Now;
+            //if (nameValidation && statusValidation)
+            //{
+            //    await _logRepository.Add(log);
+            //}
 
-                await _logRepository.Add(log);
-            }
+            await _logRepository.Add(log);
+
+            return log;
         }
 
-        public async Task LogUpdate(Log log)
+        public async Task<Log> LogUpdate(Log log)
         {
-            var nameValidation = log.isString(log.User, "User");
-            var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
+            //var nameValidation = log.isString(log.User, "User");
+            //var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
 
-            if (nameValidation && statusValidation)
-            {
-                log.UpdateDate = DateTime.Now;
-                await _logRepository.Update(log);
-            }
+            //if (nameValidation && statusValidation)
+            //{
+            //    await _logRepository.Update(log);
+            //}
+
+            return log;
         }
 
         public async Task<List<Log>> LogAddRange(List<Log> logList)
@@ -53,14 +55,13 @@ namespace LogChallenge.Domain.Services
 
                 if (nameValidation && statusValidation)
                 {
-                    log.RegDate = DateTime.Now;
-                    log.UpdateDate = DateTime.Now;
-
                     LogListOK.Add(log);
                 }
             }
 
-            return await _logRepository.LogAddRange(LogListOK);
+            await _logRepository.LogAddRange(LogListOK);
+
+            return logList;
         }
 
     }
