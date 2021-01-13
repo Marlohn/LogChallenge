@@ -2,6 +2,7 @@
 using LogChallenge.Domain.Interfaces.Repositories;
 using LogChallenge.Domain.Interfaces.Services;
 using LogChallenge.Domain.Services.Generic;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -23,7 +24,9 @@ namespace LogChallenge.Domain.Services
 
             if (nameValidation && statusValidation)
             {
-                //log.State = true;
+                log.RegDate = DateTime.Now;
+                log.UpdateDate = DateTime.Now;
+
                 await _logRepository.Add(log);
             }
         }
@@ -35,6 +38,7 @@ namespace LogChallenge.Domain.Services
 
             if (nameValidation && statusValidation)
             {
+                log.UpdateDate = DateTime.Now;
                 await _logRepository.Update(log);
             }
         }
@@ -49,6 +53,9 @@ namespace LogChallenge.Domain.Services
 
                 if (nameValidation && statusValidation)
                 {
+                    log.RegDate = DateTime.Now;
+                    log.UpdateDate = DateTime.Now;
+
                     LogListOK.Add(log);
                 }
             }

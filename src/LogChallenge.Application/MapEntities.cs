@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using LogChallenge.Application.Dto;
+using LogChallenge.Application.Dto.Generic;
 using LogChallenge.Domain.Entities;
+using LogChallenge.Domain.Entities.Generic;
 
 namespace LogChallenge.Application
 {
@@ -8,6 +10,10 @@ namespace LogChallenge.Application
     {
         public MapEntities()
         {
+            CreateMap<BaseEntity, BaseEntityDto>();
+            CreateMap<BaseEntityDto, BaseEntity>();
+            CreateMap<Notification, NotificationDto>();
+            CreateMap<NotificationDto, Notification>();
             CreateMap<Log, LogDto>();
             CreateMap<LogDto, Log>();
         }

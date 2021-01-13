@@ -6,20 +6,20 @@ namespace LogChallenge.Application.Dto
 {
     public class LogDto : BaseEntityDto
     {
-        [Required]
+        //[Required]
         public string Host { get; set; }
 
         public string Identity { get; set; }
 
         public string User { get; set; }
 
-        [Required]
+        //[Required]
         public DateTime DateTime { get; set; }
 
-        [Required]
+        //[Required]
         public string Request { get; set; }
 
-        [Required]
+        //[Required]
         public int StatusCode { get; set; }
 
         public int? Size { get; set; }

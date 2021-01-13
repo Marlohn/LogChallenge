@@ -57,13 +57,13 @@ namespace LogChallenge.UI.Web.Controllers
         {
             try
             {
-                await _LogApplication.LogAdd(logDto);
+               await _LogApplication.LogAdd(logDto);
 
-                if (logDto.notifications.Any())
+                if (logDto.Notifications.Any())
                 {
-                    foreach (var notification in logDto.notifications)
+                    foreach (var notification in logDto.Notifications)
                     {
-                        ModelState.AddModelError(notification.PropertyName, notification.message);
+                        ModelState.AddModelError(notification.PropertyName, notification.Message);
                     }
 
                     return View("Create", logDto);
@@ -92,11 +92,11 @@ namespace LogChallenge.UI.Web.Controllers
             {
                 await _LogApplication.LogUpdate(logDto);
 
-                if (logDto.notifications.Any())
+                if (logDto.Notifications.Any())
                 {
-                    foreach (var notification in logDto.notifications)
+                    foreach (var notification in logDto.Notifications)
                     {
-                        ModelState.AddModelError(notification.PropertyName, notification.message);
+                        ModelState.AddModelError(notification.PropertyName, notification.Message);
                     }
 
                     return View("Edit", logDto);

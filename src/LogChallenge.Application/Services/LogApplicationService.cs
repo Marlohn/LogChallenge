@@ -73,18 +73,18 @@ namespace LogChallenge.Application.Services
                         }
                         catch (Exception)
                         {
-                            currentLog.notifications.Add(new NotificationDto
+                            currentLog.Notifications.Add(new NotificationDto
                             {
-                                message = "Invalid property value",
+                                Message = "Invalid property value",
                                 PropertyName = "Line " + lineCount
                             });
                         }
                     }
                     else
                     {
-                        currentLog.notifications.Add(new NotificationDto
+                        currentLog.Notifications.Add(new NotificationDto
                         {
-                            message = "Content does not math regex",
+                            Message = "Content does not math regex",
                             PropertyName = "Line " + lineCount
                         });
                     }

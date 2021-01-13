@@ -7,25 +7,25 @@ namespace LogChallenge.Domain.Entities.Generic
     {
         public Notification()
         {
-            notifications = new List<Notification>();
+            Notifications = new List<Notification>();
         }
 
         [NotMapped]
         public string PropertyName { get; set; }
 
         [NotMapped]
-        public string mensage { get; set; }
+        public string Message { get; set; }
 
         [NotMapped]
-        public List<Notification> notifications { get; set; }
+        public List<Notification> Notifications { get; set; }
 
         public bool isString(string value, string propertyName)
         {
             if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(propertyName))
             {
-                notifications.Add(new Notification
+                Notifications.Add(new Notification
                 {
-                    mensage = "Required field",
+                    Message = "Required field",
                     PropertyName = propertyName
                 });
                 return false;
@@ -37,9 +37,9 @@ namespace LogChallenge.Domain.Entities.Generic
         {
             if (value < 1 || string.IsNullOrEmpty(propertyName))
             {
-                notifications.Add(new Notification
+                Notifications.Add(new Notification
                 {
-                    mensage = "Value must be bigger than 0",
+                    Message = "Value must be bigger than 0",
                     PropertyName = propertyName
                 });
                 return false;
