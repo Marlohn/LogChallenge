@@ -19,7 +19,7 @@ namespace LogChallenge.Domain.Entities.Generic
         [NotMapped]
         public List<Notification> Notifications { get; set; }
 
-        public bool isString(string value, string propertyName)
+        public bool IsNullOrEmpty(string value, string propertyName)
         {
             if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(propertyName))
             {
@@ -33,7 +33,7 @@ namespace LogChallenge.Domain.Entities.Generic
             return true;
         }
 
-        public bool isPositiveInteger(int value, string propertyName)
+        public bool IsNumeric(int value, string propertyName)
         {
             if (value < 1 || string.IsNullOrEmpty(propertyName))
             {

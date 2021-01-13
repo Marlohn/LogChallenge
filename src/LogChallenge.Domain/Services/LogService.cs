@@ -19,8 +19,8 @@ namespace LogChallenge.Domain.Services
 
         public async Task<Log> LogAdd(Log log)
         {
-            //var nameValidation = log.isString(log.User, "User");
-            //var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
+            //var nameValidation = log.IsNullOrEmpty(log.User, "User");
+            //var statusValidation = log.IsNumeric(log.StatusCode, "StatusCode");
 
             //if (nameValidation && statusValidation)
             //{
@@ -28,39 +28,41 @@ namespace LogChallenge.Domain.Services
             //}
 
             await _logRepository.Add(log);
-
             return log;
         }
 
         public async Task<Log> LogUpdate(Log log)
         {
-            //var nameValidation = log.isString(log.User, "User");
-            //var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
+            //var nameValidation = log.IsNullOrEmpty(log.User, "User");
+            //var statusValidation = log.IsNumeric(log.StatusCode, "StatusCode");
 
             //if (nameValidation && statusValidation)
             //{
             //    await _logRepository.Update(log);
             //}
 
+            await _logRepository.Update(log);
             return log;
         }
 
         public async Task<List<Log>> LogAddRange(List<Log> logList)
         {
-            var LogListOK = new List<Log>();
-            foreach (var log in logList)
-            {
-                var nameValidation = log.isString(log.User, "User");
-                var statusValidation = log.isPositiveInteger(log.StatusCode, "StatusCode");
+            //var LogListOK = new List<Log>();
+            //foreach (var log in logList)
+            //{
+            //    var nameValidation = log.IsNullOrEmpty(log.Host, "Host");
 
-                if (nameValidation && statusValidation)
-                {
-                    LogListOK.Add(log);
-                }
-            }
+            //    var statusValidation = log.IsNumeric(log.StatusCode, "StatusCode");
 
-            await _logRepository.LogAddRange(LogListOK);
+            //    if (nameValidation && statusValidation)
+            //    {
+            //        LogListOK.Add(log);
+            //    }
+            //}
 
+            //await _logRepository.LogAddRange(LogListOK);
+
+            await _logRepository.LogAddRange(logList);
             return logList;
         }
 
