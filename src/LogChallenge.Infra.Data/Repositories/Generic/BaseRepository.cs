@@ -21,6 +21,9 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
 
         public async Task<Guid> Add(T entity)
         {
+            entity.RegDate = DateTime.Now;
+            entity.UpdateDate = DateTime.Now;
+
             var id = _context.Set<T>().Add(entity).Entity.Id;
             await _context.SaveChangesAsync();
             return id;
@@ -54,6 +57,8 @@ namespace LogChallenge.Infra.Data.Repositories.Generic
 
         public async Task Update(T entity)
         {
+            entity.UpdateDate = DateTime.Now;
+
             _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
         }

@@ -19,8 +19,6 @@ namespace LogChallenge.Domain.Services.Generic
 
         public async Task<Guid> Add(T entity)
         {
-            entity.RegDate = DateTime.Now;
-            entity.UpdateDate = DateTime.Now;
             return await _repository.Add(entity);
         }
 
@@ -36,7 +34,6 @@ namespace LogChallenge.Domain.Services.Generic
 
         public async Task Update(T entity)
         {
-            entity.UpdateDate = DateTime.Now;
             await _repository.Update(entity);
         }
 
