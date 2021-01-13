@@ -26,19 +26,21 @@ namespace LogChallenge.Application.Services
             _logService = logService;
         }
 
-        public async Task LogUpdate(LogDto log)
+        public async Task<LogDto> LogUpdate(LogDto logDto)
         {
-            await _logService.LogUpdate(_mapper.Map<Log>(log));
+            var log = await _logService.LogUpdate(_mapper.Map<Log>(logDto));
+            return _mapper.Map<LogDto>(log);
         }
 
-        public async Task LogAdd(LogDto log)
+        public async Task<LogDto> LogAdd(LogDto logDto)
         {
-            await _logService.LogAdd(_mapper.Map<Log>(log));
+            var log = await _logService.LogAdd(_mapper.Map<Log>(logDto));
+            return _mapper.Map<LogDto>(log); 
         }
 
-        public async Task<List<LogDto>> LogAddRange(List<LogDto> logList)
+        public async Task<List<LogDto>> LogAddRange(List<LogDto> logDtoList)
         {
-            return _mapper.Map<List<LogDto>>(await _logService.LogAddRange(_mapper.Map<List<Log>>(logList)));
+            return _mapper.Map<List<LogDto>>(await _logService.LogAddRange(_mapper.Map<List<Log>>(logDtoList)));
         }
 
         public async Task<List<LogDto>> ConvertFileToLog(IFormFile file)

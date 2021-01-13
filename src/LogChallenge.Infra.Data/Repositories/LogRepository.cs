@@ -29,12 +29,10 @@ namespace LogChallenge.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<List<Log>> LogAddRange(List<Log> logList)
+        public async Task LogAddRange(List<Log> logList)
         {
             await _context.AddRangeAsync(logList);
             await _context.SaveChangesAsync();
-
-            return logList;
         }
 
     }

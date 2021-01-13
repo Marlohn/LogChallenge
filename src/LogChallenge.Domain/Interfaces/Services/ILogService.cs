@@ -7,8 +7,8 @@ namespace LogChallenge.Domain.Interfaces.Services
 {
     public interface ILogService : IBaseService<Log>
     {
-        Task LogAdd(Log log);
-        Task LogUpdate(Log log);
+        Task<Log> LogAdd(Log log);
+        Task<Log> LogUpdate(Log log);
         Task<List<Log>> LogAddRange(List<Log> logList);
     }
 }

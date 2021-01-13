@@ -9,8 +9,8 @@ namespace LogChallenge.Application.Interfaces
 {
     public interface ILogApplication : IBaseApplication<Log, LogDto>
     {
-        Task LogAdd(LogDto log);
-        Task LogUpdate(LogDto log);
+        Task<LogDto> LogAdd(LogDto log);
+        Task<LogDto> LogUpdate(LogDto log);
         Task<List<LogDto>> ConvertFileToLog(IFormFile file);
         Task<List<LogDto>> LogAddRange(List<LogDto> logList);
     }

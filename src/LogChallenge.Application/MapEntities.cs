@@ -10,12 +10,12 @@ namespace LogChallenge.Application
     {
         public MapEntities()
         {
+            CreateMap<Log, LogDto>();
+            CreateMap<LogDto, Log>();
             CreateMap<BaseEntity, BaseEntityDto>();
             CreateMap<BaseEntityDto, BaseEntity>();
             CreateMap<Notification, NotificationDto>();
             CreateMap<NotificationDto, Notification>();
-            CreateMap<Log, LogDto>();
-            CreateMap<LogDto, Log>();
         }
     }
 }

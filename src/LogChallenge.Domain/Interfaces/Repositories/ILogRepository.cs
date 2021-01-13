@@ -9,6 +9,6 @@ namespace LogChallenge.Domain.Interfaces.Repositories
     {
         Task AddLog(Log log);
         Task UpdateLog(Log log);
-        Task<List<Log>> LogAddRange(List<Log> logList);
+        Task LogAddRange(List<Log> logList);
     }
 }
