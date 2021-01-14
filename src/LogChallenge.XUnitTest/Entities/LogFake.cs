@@ -23,6 +23,7 @@ namespace LogChallenge.XUnitTest.Entities
                 .RuleFor(u => u.Referer, f => f.Internet.UrlWithPath())
                 .RuleFor(u => u.UserAgent, f => f.Internet.UserAgent())
                 .RuleFor(u => u.RegDate, f => f.Date.Past())
+                .RuleFor(u => u.UpdateDate, f => f.Date.Recent(0))
                 .Generate();
         }
     }
