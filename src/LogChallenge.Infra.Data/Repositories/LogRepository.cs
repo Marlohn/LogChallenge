@@ -17,18 +17,6 @@ namespace LogChallenge.Infra.Data.Repositories
             _context = context;
         }
 
-        public async Task AddLog(Log log)
-        {
-            //Registra em alguma base de dados
-            throw new NotImplementedException();
-        }
-
-        public async Task UpdateLog(Log log)
-        {
-            //Registra em alguma base de dados
-            throw new NotImplementedException();
-        }
-
         public async Task LogAddRange(List<Log> logList)
         {
             await _context.AddRangeAsync(logList);
