@@ -8,8 +8,6 @@ namespace LogChallenge.Domain.Validations
     {
         public LogValidator()
         {
-            RuleFor(x => x.Id)
-                .NotNull().NotEmpty().WithMessage("The Id field is required.");
             RuleFor(x => x.Host)
                 .NotNull().NotEmpty().WithMessage("The host field is required.")
                 .Length(1, 20).WithMessage("The Host length must be between 1 and 20.");
