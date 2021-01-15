@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using LogChallenge.Domain.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace LogChallenge.XUnitTest.Entities
 {
@@ -9,7 +10,7 @@ namespace LogChallenge.XUnitTest.Entities
         static string[] HTTP_VERBS = new[] { "POST", "GET", "PUT", "PATCH", "DELETE" };
         static string[] HTTP_VERSIONS = new[] { "HTTP/1.0", "HTTP/1.1", "HTTP/2.0" };
 
-        public Log GenerateFull()
+        public Log Generate()
         {
             return new Faker<Log>()
                 .RuleFor(u => u.Id, f => Guid.NewGuid())
@@ -25,6 +26,16 @@ namespace LogChallenge.XUnitTest.Entities
                 .RuleFor(u => u.RegDate, f => f.Date.Past())
                 .RuleFor(u => u.UpdateDate, f => f.Date.Recent(0))
                 .Generate();
+        }
+
+        public List<Log> Generate(int count) 
+        {
+            var returnList = new List<Log>();
+            for (int i = 0; i < count; i++)
+            {
+                returnList.Add(Generate());
+            }
+            return returnList;
         }
     }
 }
