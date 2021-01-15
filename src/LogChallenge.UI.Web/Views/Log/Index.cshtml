@@ -4,6 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+<link href="~/css/PagedList.css" rel="stylesheet" type="text/css"/>
+
 <h1>Index</h1>
 
 <p>
@@ -22,7 +27,7 @@
     </div>
 </div>
 <br>
-<table class="table" id="table">
+<table style="margin-left: -20%; margin-right: -20%;">
     <thead>
         <tr>
             <th>
@@ -56,52 +61,54 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var product in ViewBag.OnePageOfLogs)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Host)
+                    @product.Host
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Identity)
+                    @product.Identity
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User)
+                    @product.User
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateTime)
+                    @product.DateTime
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Request)
+                    @product.Request
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StatusCode)
+                    @product.StatusCode
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Size)
+                    @product.Size
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Referer)
+                    @product.Referer
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserAgent)
+                    @product.UserAgent
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Edit", "Edit", new { id = @product.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = @product.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = @product.Id })
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfLogs, page => Url.Action("Index", new { FilterParameter = ViewBag.FilterParameter, FilterValue = ViewBag.FilterValue, page = page }))
+
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
 <script type="text/javascript">
 
     $("#selectedOption").on("click", '.dropdown-item', function (e) {
-        window.location.href = "../log/index?" + $(this).attr('id') + "=" + $("#textbox_search").val();
+        window.location.href = "../log/index?FilterParameter=" + $(this).attr('id') + "&FilterValue=" + $("#textbox_search").val();
     });
 
 </script>

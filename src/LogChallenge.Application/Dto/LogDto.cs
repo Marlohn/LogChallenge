@@ -1,7 +1,9 @@
 ﻿using LogChallenge.Application.Dto.Generic;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LogChallenge.Application.Dto
 {
@@ -48,5 +50,8 @@ namespace LogChallenge.Application.Dto
         [DisplayName("UserAgent")]
         [MaxLength(255)]
         public string UserAgent { get; set; }
+
+        [NotMapped]
+        public List<NotificationDto> Notifications { get; set; }
     }
 }
