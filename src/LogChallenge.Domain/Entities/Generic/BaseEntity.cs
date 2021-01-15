@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LogChallenge.Domain.Entities.Generic
 {
-    public class BaseEntity : Notification
+    public class BaseEntity
     {
         public Guid Id { get; set; }
 

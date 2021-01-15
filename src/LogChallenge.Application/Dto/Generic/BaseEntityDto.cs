@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LogChallenge.Application.Dto.Generic
 {
-    public class BaseEntityDto : NotificationDto
+    public class BaseEntityDto
     {
         [Key]
         public Guid Id { get; set; }
