@@ -2,6 +2,7 @@
 using LogChallenge.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LogChallenge.XUnitTest.Entities
 {
@@ -37,5 +38,25 @@ namespace LogChallenge.XUnitTest.Entities
             }
             return returnList;
         }
+
+        public List<Log> Generate(int count, int errors)
+        {
+            var returnList = new List<Log>();
+            if (count < errors) return returnList;
+
+            for (int i = 0; i < count; i++)
+            {                
+                returnList.Add(Generate());
+            }
+
+            Random rnd = new Random();
+            foreach (var p in returnList.OrderBy(p => rnd.Next()).Take(errors).ToList()) 
+            {
+                p.Host = "";
+            }
+
+            return returnList;
+        }
+
     }
 }
