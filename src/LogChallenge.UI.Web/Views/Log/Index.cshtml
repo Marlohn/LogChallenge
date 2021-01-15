@@ -27,7 +27,7 @@
     </div>
 </div>
 <br>
-<table>
+<table style="margin-left: -20%; margin-right: -20%;">
     <thead>
         <tr>
             <th>
@@ -61,7 +61,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in ViewBag.OnePageOfProducts)
+        @foreach (var product in ViewBag.OnePageOfLogs)
         {
             <tr>
                 <td>
@@ -101,14 +101,14 @@
     </tbody>
 </table>
 
-@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfLogs, page => Url.Action("Index", new { FilterParameter = ViewBag.FilterParameter, FilterValue = ViewBag.FilterValue, page = page }))
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
 <script type="text/javascript">
 
     $("#selectedOption").on("click", '.dropdown-item', function (e) {
-        window.location.href = "../log/index?" + $(this).attr('id') + "=" + $("#textbox_search").val();
+        window.location.href = "../log/index?FilterParameter=" + $(this).attr('id') + "&FilterValue=" + $("#textbox_search").val();
     });
 
 </script>

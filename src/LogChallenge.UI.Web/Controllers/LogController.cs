@@ -3,8 +3,10 @@ using LogChallenge.Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace LogChallenge.UI.Web.Controllers
 {
@@ -18,24 +20,36 @@ namespace LogChallenge.UI.Web.Controllers
         }
 
         // GET: LogController
-        public async Task<IActionResult> Index(string host, string userAgent, DateTime? dateTime)
+        public async Task<IActionResult> Index(string FilterParameter, string FilterValue, int? page)
         {
-            if (!string.IsNullOrEmpty(host))
+            ViewBag.FilterParameter = FilterParameter;
+            ViewBag.FilterValue = FilterValue;
+
+            if (string.IsNullOrEmpty(FilterValue))
             {
-                return View(await _LogApplication.Where(a => a.Host == host));
+                return GetPageNumber(page, await _LogApplication.List());
             }
 
-            if (!string.IsNullOrEmpty(userAgent))
+            switch (FilterParameter)
             {
-                return View(await _LogApplication.Where(a => a.UserAgent == userAgent));
+                case "host":
+                    return GetPageNumber(page, await _LogApplication.Where(a => a.Host == FilterValue));
+                case "userAgent":
+                    return GetPageNumber(page, await _LogApplication.Where(a => a.UserAgent == FilterValue));
+                case "dateTime":
+                    return GetPageNumber(page, await _LogApplication.Where(a => a.DateTime == Convert.ToDateTime(FilterValue)));
+                default:
+                    return GetPageNumber(page, await _LogApplication.List());
             }
+        }
 
-            if (dateTime != null)
-            {
-                return View(await _LogApplication.Where(a => a.DateTime == dateTime));
-            }
+        private IActionResult GetPageNumber(int? page, IEnumerable<LogDto> logList)
+        {
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+            var OnePageOfLogs = logList.ToPagedList(pageNumber, 25); // will only contain 25 products max because of the pageSize
 
-            return View(await _LogApplication.List());
+            ViewBag.OnePageOfLogs = OnePageOfLogs;
+            return View();
         }
 
         // GET: LogController/Details/5
