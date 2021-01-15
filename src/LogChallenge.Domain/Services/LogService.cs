@@ -68,7 +68,10 @@ namespace LogChallenge.Domain.Services
                     foreach (var error in logValidator.Errors)
                     {
                         log.Notifications.Add(new Notification { PropertyName = error.PropertyName, Message = error.ErrorMessage });
-                    }
+                    }                    
+                }
+                else
+                {
                     LogListOK.Add(log);
                 }
             }
