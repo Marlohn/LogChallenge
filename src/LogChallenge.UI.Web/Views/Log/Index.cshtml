@@ -7,7 +7,7 @@
 @using X.PagedList.Mvc.Core;
 @using X.PagedList;
 
-<link href="~/css/PagedList.css" rel="stylesheet" type="text/css"/>
+<link href="~/css/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h1>Index</h1>
 
@@ -27,80 +27,82 @@
     </div>
 </div>
 <br>
-<table style="margin-left: -20%; margin-right: -20%;">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Host)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Identity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Request)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StatusCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Referer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserAgent)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in ViewBag.OnePageOfLogs)
-        {
+@if (@ViewBag.OnePageOfLogs != null)
+{
+    <table style="margin-left: -20%; margin-right: -20%;">
+        <thead>
             <tr>
-                <td>
-                    @product.Host
-                </td>
-                <td>
-                    @product.Identity
-                </td>
-                <td>
-                    @product.User
-                </td>
-                <td>
-                    @product.DateTime
-                </td>
-                <td>
-                    @product.Request
-                </td>
-                <td>
-                    @product.StatusCode
-                </td>
-                <td>
-                    @product.Size
-                </td>
-                <td>
-                    @product.Referer
-                </td>
-                <td>
-                    @product.UserAgent
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = @product.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = @product.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = @product.Id })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Host)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Identity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Request)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StatusCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Referer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserAgent)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            @foreach (var product in ViewBag.OnePageOfLogs)
+            {
+                <tr>
+                    <td>
+                        @product.Host
+                    </td>
+                    <td>
+                        @product.Identity
+                    </td>
+                    <td>
+                        @product.User
+                    </td>
+                    <td>
+                        @product.DateTime
+                    </td>
+                    <td>
+                        @product.Request
+                    </td>
+                    <td>
+                        @product.StatusCode
+                    </td>
+                    <td>
+                        @product.Size
+                    </td>
+                    <td>
+                        @product.Referer
+                    </td>
+                    <td>
+                        @product.UserAgent
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = @product.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = @product.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = @product.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 @Html.PagedListPager((IPagedList)ViewBag.OnePageOfLogs, page => Url.Action("Index", new { FilterParameter = ViewBag.FilterParameter, FilterValue = ViewBag.FilterValue, page = page }))
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
