@@ -72,12 +72,25 @@ namespace LogChallenge.Domain.Services
                 }
                 else
                 {
-                    LogListOK.Add(log);
+                    if (!await LogExists(log))
+                    {
+                        LogListOK.Add(log);
+                    }
                 }
             }
 
             await _logRepository.LogAddRange(LogListOK);
             return logList;
+        }
+
+        public async Task<bool> LogExists(Log log)
+        {
+            if (await _logRepository.LogExists(log))
+            {
+                log.Notifications.Add(new Notification { PropertyName = "Already exists", Message = "The log with informed properties already exists" });
+                return true;
+            }
+            return false;
         }
 
         public async Task<List<Log>> ConvertFileToLog(IFormFile file)
