@@ -8,5 +8,6 @@ namespace LogChallenge.Domain.Interfaces.Repositories
     public interface ILogRepository : IBaseRepository<Log>
     {
         Task LogAddRange(List<Log> logList);
+        Task<bool> LogExists(Log log);
     }
 }
