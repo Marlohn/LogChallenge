@@ -1,11 +1,46 @@
-﻿
+﻿@model IEnumerable<LogChallenge.Application.Dto.LogDto>
+
 @{
     ViewData["Title"] = "Import";
 }
+
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+<link href="~/css/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h1>Import</h1>
 
 <form asp-controller="Log" asp-action="UploadFile" method="post" enctype="multipart/form-data">
     <input type="file" name="file" />
     <button type="submit">Upload File</button>
-</form> 
+</form>
+<br>
+
+@{int line = 0;
+    if (Model != null)
+    {
+        @foreach (var log in Model)
+        {
+            line++;
+            if (log.Notifications.Count == 0)
+            {
+                <message style="color:green">Line @line was saved successful</message><br>
+            }
+            else
+            {
+                <message style="color:orangered">Line @line has errors:</message><br>
+                foreach (var notification in log.Notifications)
+                {
+                    <message style="color:red"> - @notification.PropertyName: @notification.Message</message><br>
+                }
+            }
+        }
+    }
+}
+
+<br>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
