@@ -27,7 +27,7 @@
     </div>
 </div>
 <br>
-@if (@ViewBag.OnePageOfLogs != null)
+@if (@ViewBag.OnePageOfLogs != null && Enumerable.Any(ViewBag.OnePageOfLogs))
 {
     <table style="margin-left: -20%; margin-right: -20%;">
         <thead>
