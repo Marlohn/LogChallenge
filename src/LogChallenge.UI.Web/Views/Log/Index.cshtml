@@ -1,0 +1,114 @@
+﻿@model IEnumerable<LogChallenge.Application.Dto.LogDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+<link href="~/css/PagedList.css" rel="stylesheet" type="text/css"/>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>&nbsp; &nbsp;<a asp-action="Import">Import file</a>
+</p>
+
+<div class="input-group">
+    <input type="text" class="form-control" id="textbox_search">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="submit" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</button>
+        <div class="dropdown-menu" id="selectedOption">
+            <a class="dropdown-item" href="#" id="host">By Host</a>
+            <a class="dropdown-item" href="#" id="userAgent">By UserAgent</a>
+            <a class="dropdown-item" href="#" id="dateTime">By DateTime</a>
+        </div>
+    </div>
+</div>
+<br>
+<table style="margin-left: -20%; margin-right: -20%;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Host)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Referer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAgent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in ViewBag.OnePageOfLogs)
+        {
+            <tr>
+                <td>
+                    @product.Host
+                </td>
+                <td>
+                    @product.Identity
+                </td>
+                <td>
+                    @product.User
+                </td>
+                <td>
+                    @product.DateTime
+                </td>
+                <td>
+                    @product.Request
+                </td>
+                <td>
+                    @product.StatusCode
+                </td>
+                <td>
+                    @product.Size
+                </td>
+                <td>
+                    @product.Referer
+                </td>
+                <td>
+                    @product.UserAgent
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = @product.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = @product.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = @product.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfLogs, page => Url.Action("Index", new { FilterParameter = ViewBag.FilterParameter, FilterValue = ViewBag.FilterValue, page = page }))
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script type="text/javascript">
+
+    $("#selectedOption").on("click", '.dropdown-item', function (e) {
+        window.location.href = "../log/index?FilterParameter=" + $(this).attr('id') + "&FilterValue=" + $("#textbox_search").val();
+    });
+
+</script>

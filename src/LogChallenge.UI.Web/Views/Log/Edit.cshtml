@@ -1,0 +1,83 @@
+﻿@model LogChallenge.Application.Dto.LogDto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>LogDto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Host" class="control-label"></label>
+                <input asp-for="Host" class="form-control" />
+                <span asp-validation-for="Host" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Identity" class="control-label"></label>
+                <input asp-for="Identity" class="form-control" />
+                <span asp-validation-for="Identity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User" class="control-label"></label>
+                <input asp-for="User" class="form-control" />
+                <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request" class="control-label"></label>
+                <input asp-for="Request" class="form-control" />
+                <span asp-validation-for="Request" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusCode" class="control-label"></label>
+                <input asp-for="StatusCode" class="form-control" />
+                <span asp-validation-for="StatusCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Referer" class="control-label"></label>
+                <input asp-for="Referer" class="form-control" />
+                <span asp-validation-for="Referer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserAgent" class="control-label"></label>
+                <input asp-for="UserAgent" class="form-control" />
+                <span asp-validation-for="UserAgent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegDate" class="control-label"></label>
+                <input asp-for="RegDate" class="form-control" ReadOnly/>
+                <span asp-validation-for="RegDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateDate" class="control-label"></label>
+                <input asp-for="UpdateDate" class="form-control" ReadOnly/>
+                <span asp-validation-for="UpdateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
