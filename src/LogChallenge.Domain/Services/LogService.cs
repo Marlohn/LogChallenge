@@ -68,7 +68,7 @@ namespace LogChallenge.Domain.Services
                     foreach (var error in logValidator.Errors)
                     {
                         log.Notifications.Add(new Notification { PropertyName = error.PropertyName, Message = error.ErrorMessage });
-                    }                    
+                    }
                 }
                 else
                 {
@@ -88,11 +88,9 @@ namespace LogChallenge.Domain.Services
             using (var reader = new StreamReader(file.OpenReadStream()))
             {
                 string line;
-                int lineCount = 0;
                 while ((line = await reader.ReadLineAsync()) != null)
                 {
                     var currentLog = new Log();
-                    lineCount++;
 
                     // Try to match each line against the Regex.
                     Match match = regex.Match(line);
@@ -115,7 +113,7 @@ namespace LogChallenge.Domain.Services
                             currentLog.Notifications.Add(new Notification
                             {
                                 Message = "Invalid property value",
-                                PropertyName = "Line " + lineCount
+                                PropertyName = "Exception"
                             });
                         }
                     }
@@ -123,8 +121,8 @@ namespace LogChallenge.Domain.Services
                     {
                         currentLog.Notifications.Add(new Notification
                         {
-                            Message = "Content does not math regex",
-                            PropertyName = "Line " + lineCount
+                            Message = "Content does not math",
+                            PropertyName = "Regex"
                         });
                     }
 
